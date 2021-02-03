@@ -9,12 +9,46 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Encuesta</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ng-container *ngFor="let point of survey.points">
+
+    <ion-item *ngIf="point.answer_type == 'text'">
+      <ion-label position="stacked">
+        {{ point.content }}
+      </ion-label>
+      <ion-textarea  type="text">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item *ngIf="point.answer_type == 'nps'">
+      <ion-label position="stacked">
+        {{ point.content }}
+      </ion-label>
+      <ion-input type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="point.answer_type == 'multiple'">
+      <ion-label position="stacked">
+        {{ point.content }}
+      </ion-label>
+      <ion-input type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="point.answer_type == 'smiley_scale'">
+      <ion-label position="stacked">
+        {{ point.content }}
+      </ion-label>
+      <ion-input type="text">
+      </ion-input>
+    </ion-item>
+
+  </ng-container>
+
+  <!-- <pre> {{ survey | json }}</pre> -->
+
 </ion-content>
